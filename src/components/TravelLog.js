@@ -9,12 +9,12 @@ import '../styles/index.css'
 class TravelLog extends Component {
   render () {
     return <div className='container enjoy-css'>
-      {/* <User /> */}
-      <nav className='navbar navbar-light bg-faded'>
+      <User />
+      {/* <nav className='navbar navbar-light bg-faded'>
         <span><h1 className='navbar-brand mb-0'>User: Keith</h1> </span>
         <span><h1 className='navbar-brand mb-0'>Date: 1/1/2017</h1> </span>
         <User />
-      </nav>
+      </nav> */}
       <div className='jumbotron'>
         {/* <div className='jumbotron'> */}
         <h1>Travel Log</h1> <br />
