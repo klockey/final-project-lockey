@@ -1,22 +1,63 @@
  .log {
   background: url('http://i.stack.imgur.com/ynxjD.png') repeat-y;
-  width: 600px;
-  height: 300px;
+  width: 525px;
+  height: 400px;
   font: normal 22px 'Marker Felt', cursive;
   line-height: 25px;
   padding: 2px 10px 2px 110px;
-  border: solid 1px #ddd;
 }
 
 img {
     height: 100px;
     width: 100px;
     border-radius: 10px;
+    padding:1px;
+    border:1px solid #021a40;
+    background-color: black;
 }
 
 body {
-  background-image: url('/images/bluebackground.jpeg');
-  background-repeat: no-repeat;
+   background: #76b852;
 }
 
-.top-buffer { margin-top:20px; }
+.top-buffer {
+  margin-top: 40px;
+}
+
+.jumbotron {
+  min-height: 100px;
+  margin: 0;
+  padding-bottom: 0
+}
+
+.companions{
+  text-align: center;
+}
+
+ .maps {
+   text-align: center;
+ }
+
+ .fileuploader {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+ }
+
+ input[type=file] {
+    margin: 0 auto;
+    padding: 0;
+}
+
+ .googlemap {
+   height: 500px;
+   width: 500px;
+   border-radius: 10px;
+   padding:1px;
+   border:1px solid #021a40;
+   background-color: black;
+ }
+
+.new_message {
+    text-align: center;
+}

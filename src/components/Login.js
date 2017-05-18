@@ -8,6 +8,7 @@ import {
   Redirect
 } from 'react-router-dom'
 import * as firebase from 'firebase'
+import TravelLog from './TravelLog'
 
 import db from '../db'
 window.db = db
@@ -50,8 +51,9 @@ class Login extends Component {
     const email = this.state.email
     const password = this.state.password
     const promise = auth.signInWithEmailAndPassword(email, password)
-    promise.then(user => console.log('user'))
+    promise.then(user => this.props.history.push('/travellog')) // ) console.log('user  **') <Route path='/travellog' component={TravelLog} />
     .catch(e => console.log('error with signin'))
+  //  console.log(user)
   }
 
   render () {
