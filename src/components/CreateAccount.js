@@ -47,8 +47,8 @@ class CreateAccount extends Component {
     // check for real email
     const password = this.state.password
     const promise = auth.createUserWithEmailAndPassword(email, password)
-    promise.then(user => console.log('user'))
-      .catch(e => console.log('error with signin'))
+    promise.then(user => this.props.history.push('/'))
+      .catch(e => console.log('error with registration'))
   }
 
   render () {

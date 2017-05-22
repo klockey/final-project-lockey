@@ -8,6 +8,8 @@ import {
 import Login from './Login'
 import CreateAccount from './CreateAccount'
 import TravelLog from './TravelLog'
+import TextArea from './TextArea'
+import Photo from './Photo'
 
 class App extends Component {
   render () {
@@ -17,6 +19,8 @@ class App extends Component {
           <Route exact path='/' component={Login} />
           <Route path='/createaccount' component={CreateAccount} />
           <Route path='/travellog' component={TravelLog} />
+          <Route path='/textarea' component={TextArea} />
+          <Route path='/photo' component={Photo} />
         </Switch>
       </Router>
     </div>

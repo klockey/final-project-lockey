@@ -4,7 +4,9 @@ import * as firebase from 'firebase'
 class User extends Component {
   state = {
   //  user: null
-    datetime: ''
+    datetime: '',
+    firebaseEmail: '',
+    uid: ''
   }
 
   componentWillMount () {
@@ -28,7 +30,7 @@ class User extends Component {
 
     if (user != null) {
       name = user.displayName
-      email = user.email
+      this.state.firebaseEmail = user.email
       photoUrl = user.photoURL
       emailVerified = user.emailVerified
       uid = user.uid
@@ -39,7 +41,7 @@ class User extends Component {
 
   render () {
     return <div className=''> <nav className='navbar navbar-light bg-faded'>
-      <span><h1 className='navbar-brand mb-0'>User: Keith</h1></span>
+      <span><h1 className='navbar-brand mb-0'>User: {this.state.firebaseEmail}</h1></span>
       <span><h1 className='navbar-brand mb-0'>{this.state.datetime}</h1></span>
     </nav>
     </div>

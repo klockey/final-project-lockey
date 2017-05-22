@@ -18,6 +18,9 @@ img {
 
 body {
    background: #76b852;
+   width: 732px;
+   max-width: 732px;
+   align: center;
 }
 
 .top-buffer {
@@ -27,7 +30,7 @@ body {
 .jumbotron {
   min-height: 100px;
   margin: 0;
-  padding-bottom: 0
+  margin-bottom: 0rem;
 }
 
 .companions{
@@ -40,7 +43,8 @@ body {
 
  .fileuploader {
     text-align: center;
-    padding: 0;
+    padding-left: 80px;
+    margin:10px;
     margin: 0;
  }
 
@@ -60,4 +64,28 @@ body {
 
 .new_message {
     text-align: center;
+}
+
+.form-rounded {
+border-radius: 1rem;
+}
+
+.dimensions {
+  width: 525px;
+  height: 400px;
+}
+
+.texts-align{
+  text-align: center;
+}
+
+.wrap {
+  width: 95%;
+  min-width: 900px;
+}
+
+.header-travellog {
+  padding: 0;
+  padding-bottom: 0;
+  margin: 0;
 }
