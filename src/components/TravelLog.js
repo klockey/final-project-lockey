@@ -79,26 +79,13 @@ class TravelLog extends Component {
 
         <div className='row'>
           <div className='col-md-4  text-center'>
-            <h2 className=''> Companions </h2>
+            <h2 className=''> Photo </h2>
           </div>
         </div>
 
         <div className='row top-buffer' />
 
-        <div className='row companions'>
-          <div className='col'>
-            <img src='../images/ingrid.jpg' />
-            <p>Ingrid</p>
-          </div>
-          <div className='col'>
-            <img src='../images/michelle.jpg' />
-            <p>Michelle</p>
-          </div>
-          <div className='col'>
-            <img src='../images/sara.jpg' />
-            <p>Sara</p>
-          </div>
-        </div>
+        <div className='row companions' />
 
         <div className='row top-buffer' />
 
@@ -107,6 +94,7 @@ class TravelLog extends Component {
             <input type='file' />
           </div>
         </div>
+
         <div className='row top-buffer' />
         <div className='row top-buffer' />
 
@@ -115,17 +103,9 @@ class TravelLog extends Component {
             <h2>Map</h2>
           </div>
         </div>
+
         <div className='row top-buffer' />
-        <div className='row maps'>
-          <div className='col'>
-            <GoogleMapLog
-              center={{lat: -25.363882, lng: 131.044922}}
-              zoom={15}
-              containerElement={<div style={{height: 100 + '%'}} />}
-              mapElement={<div style={{height: 100 + '%'}} />} />
-            {/* <img className='googlemap' src='../images/map.png' /> */}
-          </div>
-        </div>
+
       </form>
       <footer className='footer'>
         <p>&copy; Keith Lockey 2017</p>

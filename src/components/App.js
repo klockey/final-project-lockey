@@ -10,6 +10,7 @@ import CreateAccount from './CreateAccount'
 import TravelLog from './TravelLog'
 import TextArea from './TextArea'
 import Photo from './Photo'
+import MapLog from './Maplog'
 
 class App extends Component {
   render () {
@@ -21,6 +22,7 @@ class App extends Component {
           <Route path='/travellog' component={TravelLog} />
           <Route path='/textarea' component={TextArea} />
           <Route path='/photo' component={Photo} />
+          <Route path='/maplog' component={MapLog} />
         </Switch>
       </Router>
     </div>

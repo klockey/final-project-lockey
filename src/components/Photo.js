@@ -4,10 +4,13 @@ import '../styles/bootstrap.min.css'
 import '../styles/index.css'
 import '../styles/justified-nav.css'
 import FileInput from 'react-file-input'
+import Loading from './Loading'
 
 class Photo extends Component {
   state = {
-    url: ''
+    url: '',
+    counter: 0,
+    loaded: false
   }
 
   componentWillMount () {
@@ -23,17 +26,26 @@ class Photo extends Component {
 
   handleChange = (event) => {
     let file = event.target.files[0]
-    console.log(file.name)
+  //  console.log(file.name)
+    console.log(this.state.counter)
     let storageRef = firebase.storage().ref('sweetgifs/' + file.name)
-    // storageRef.getDownloadURL().then((url) => {
-    //   this.setState({
-    //     url: url
-    //   })
-    //   console.log(this.state.url)
-    // })
+    storageRef.put(file).then(() => {
+      storageRef.getDownloadURL().then((url) => {
+        this.setState({
+          url: url,
+          loaded: true
+        })
+      })
+    })
+  }
+
+  componentDidUpdate () {
+    firebase.database().ref('/users/-fooooooo1/logs/2017-05-10/pictures/' + new Date().getUTCMilliseconds() + new Date().getUTCMilliseconds()).set(this.state.url)
+    console.log('url' + this.state.url)
   }
 
   render () {
+  //  if (!this.state.loaded) return <Loading />
     return <div className='Photo'>
       <div className='row fileuploader'>
         <div className='col'>
