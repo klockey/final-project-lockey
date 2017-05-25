@@ -9,7 +9,7 @@ class User extends Component {
     uid: ''
   }
 
-  componentWillMount () {
+  gettime () {
     let date = new Date()
     let hours = date.getHours() > 12 ? date.getHours() - 12 : date.getHours()
     let am_pm = date.getHours() >= 12 ? 'PM' : 'AM'
@@ -24,7 +24,9 @@ class User extends Component {
                 time
 
     console.log(this.state.datetime)
+  }
 
+  componentWillMount () {
     let user = firebase.auth().currentUser
     let name, email, photoUrl, uid, emailVerified
 
@@ -42,7 +44,7 @@ class User extends Component {
   render () {
     return <div className=''> <nav className='navbar navbar-light bg-faded'>
       <span><h1 className='navbar-brand mb-0'>User: {this.state.firebaseEmail}</h1></span>
-      <span><h1 className='navbar-brand mb-0'>{this.state.datetime}</h1></span>
+      <span><h1 className='navbar-brand mb-0'>{this.gettime}</h1></span>
     </nav>
     </div>
   }

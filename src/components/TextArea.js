@@ -6,10 +6,19 @@ import '../styles/justified-nav.css'
 import Loading from './Loading'
 
 class TextArea extends Component {
-  state = {
-    uid: '',
-    entry: '',
-    loaded: false
+  constructor (props) {
+    super(props)
+    this.state = {
+      entry: '',
+      loaded: false,
+      user: {},
+    //  uid: 'CG9CqmcNdIZvA54msCoNBDX91TK2',
+  //    uid: '-fooooooo1',
+      date: '2017-05-25'
+  //    childData: '',
+  //    entries: [],
+  //    entries2: ''
+    }
   }
 
   componentWillMount () {
@@ -22,16 +31,22 @@ class TextArea extends Component {
 
     firebase.initializeApp(config)
 
-    const dbRefObject = firebase.database().ref().child('users')
+    const promise = firebase.auth().signInWithEmailAndPassword('hello@hello.com', 'aaaaaa')
 
-    dbRefObject.on('value', snapshot => {
-      let entry = snapshot.child('-fooooooo1').child('logs').child('2017-05-10').child('entry').val()
-      this.setState({ loaded: true, entry: entry })
-    })
+    promise.then(user => {
+      this.setState({user: user})
+      this.dbRefObject = firebase.database().ref(`/users/${user.uid}/logs/${this.state.date}`)
+      this.dbRefObject.on('value', snapshot => {
+        let log = snapshot.val()
+        this.setState({ loaded: true, entry: log.entry })
+      })
+    }).catch(e => console.log(e))
   }
 
   componentDidUpdate () {
-    firebase.database().ref('/users/-fooooooo1/logs/2017-05-10/entry').set(this.state.entry)
+    if (this.dbRefObject) {
+      this.dbRefObject.set({ entry: this.state.entry })
+    }
   }
 
   _change = (event) => {
@@ -51,3 +66,41 @@ class TextArea extends Component {
 }
 
 export default TextArea
+
+//      firebase.auth().onAuthStateChanged((user) => {
+//  })
+    // console.log('entries 2' + entries)
+    //  let getit = entries.map((a) => {
+    //    return a
+    //  })
+
+  //  console.log(getit)
+
+  //  console.log('query: ' + query)
+
+    // let user = firebase.auth().currentUser
+
+  //  firebase.auth().signInAnonymously().catch((error) => {
+    //  var errorCode = error.code
+    //  var errorMessage = error.message
+  //  })
+
+    //  console.log(user)
+    //  this.setState({user: user})
+//    })
+
+  //  console.log('user' + this.state.user)
+
+    // let name, email, photoUrl, uid, emailVerified
+
+    // if (this.state.user != null) {
+    //   name = user.displayName
+    //   this.state.firebaseEmail = user.email
+    //   photoUrl = user.photoURL
+    //   emailVerified = user.emailVerified
+    //   uid = user.uid
+    //   console.log(uid)
+    //   console.log(email)
+    // }
+
+    // console.log('uid ' + this.state.user.uid)

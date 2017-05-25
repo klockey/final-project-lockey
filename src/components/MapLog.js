@@ -8,13 +8,13 @@ import '../styles/justified-nav.css'
 
 class MapLog extends Component {
   componentWillMount () {
-    const config = {
-      apiKey: 'AIzaSyCaFMPFRHXpzNH63e-i471KSSfWU7625KE',
-      authDomain: 'travellog-848b1.firebaseapp.com',
-      databaseURL: 'https://travellog-848b1.firebaseio.com',
-      storageBucket: 'travellog-848b1.appspot.com'
-    }
-    firebase.initializeApp(config)
+    // const config = {
+    //   apiKey: 'AIzaSyCaFMPFRHXpzNH63e-i471KSSfWU7625KE',
+    //   authDomain: 'travellog-848b1.firebaseapp.com',
+    //   databaseURL: 'https://travellog-848b1.firebaseio.com',
+    //   storageBucket: 'travellog-848b1.appspot.com'
+    // }
+    // firebase.initializeApp(config)
   }
 
   render () {
@@ -25,7 +25,7 @@ class MapLog extends Component {
             center={{lat: -25.363882, lng: 131.044922}}
             zoom={3}
             containerElement={<div style={{height: 100 + '%'}} />}
-            mapElement={<div style={{height: 30 + '%', width: 50 + '%'}} />} />
+            mapElement={<div style={{height: 50 + '%', width: 50 + '%'}} />} />
         </div>
       </div>
     </div>

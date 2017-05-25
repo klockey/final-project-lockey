@@ -47,13 +47,13 @@ class Login extends Component {
     event.preventDefault()
     console.log('submit')
     console.log(this.state.email)
+    console.log('password' + this.state.password)
     const auth = firebase.auth()
     const email = this.state.email
     const password = this.state.password
     const promise = auth.signInWithEmailAndPassword(email, password)
     promise.then(user => this.props.history.push('/travellog')) // ) console.log('user  **') <Route path='/travellog' component={TravelLog} />
     .catch(e => console.log('error with signin'))
-  //  console.log(user)
   }
 
   render () {

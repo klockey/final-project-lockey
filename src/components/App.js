@@ -11,6 +11,8 @@ import TravelLog from './TravelLog'
 import TextArea from './TextArea'
 import Photo from './Photo'
 import MapLog from './Maplog'
+import User from './User'
+import Blog from './Blog'
 
 class App extends Component {
   render () {
@@ -23,6 +25,8 @@ class App extends Component {
           <Route path='/textarea' component={TextArea} />
           <Route path='/photo' component={Photo} />
           <Route path='/maplog' component={MapLog} />
+          <Route path='/user' component={User} />
+          <Route path='/blog' component={Blog} />
         </Switch>
       </Router>
     </div>
