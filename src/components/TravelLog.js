@@ -1,115 +1,119 @@
 import React, { Component } from 'react'
-import GoogleMapLog from './GoogleMapLog'
-import User from './User'
-import * as firebase from 'firebase'
-import nodejs from 'node.js'
-import Loading from './Loading'
 import TextArea from './TextArea'
-import '../styles/bootstrap.min.css'
-import '../styles/index.css'
-import '../styles/justified-nav.css'
-// import '../styles/bootstrap.css'
+import Photo from './Photo'
+import MapLog from './MapLog'
 
 class TravelLog extends Component {
-  state = {
-    uid: '',
-    entry: '',
-    loaded: false
-  }
-
-  componentWillMount () {
-    // const config = {
-    //   apiKey: 'AIzaSyCaFMPFRHXpzNH63e-i471KSSfWU7625KE',
-    //   authDomain: 'travellog-848b1.firebaseapp.com',
-    //   databaseURL: 'https://travellog-848b1.firebaseio.com',
-    //   storageBucket: 'travellog-848b1.appspot.com'
-  }
-
-    // firebase.initializeApp(config)
-    //
-    // const dbRefObject = firebase.database().ref().child('users')
-    //
-    // dbRefObject.on('value', snapshot => {
-    //   this.state.entry = JSON.stringify(snapshot.child('-fooooooo1').child('logs').child('2017-05-10').child('entry').val())
-    //   this.state.entry = this.state.entry.replace(/\"/g, '')
-    //   this.setState({loaded: true})
-    // })
-
-// ***********************************************************
-
-    // dbRefObject.child('users').child('-fooooooo1').child('logs').child('2017-05-10').set({
-    //   entry: '**mmm****'
-    // })
-
-// **********************************************************
-    // var postData = {
-    //   entry: '*****'
-    // }
-
-  // Get a key for a new Post.
-  //  var newPostKey = firebase.database().ref().child('users').push().key
-
-//  Write the new post's data simultaneously in the posts list and the user's post list.
-  //  var updates = {}
-  //  updates['/users/-fooooooo1/logs/2017-05-10/entry' + newPostKey] = postData
-
-//* ********************/
-    // let ent = 'ppp'
-    //
-    // let updates = {}
-    // updates['/users/-fooooooo1/logs/2017-05-10/entry/'] = ent
-    // firebase.database().ref().update(updates)
-
   render () {
-    return <div className='container enjoy-css'>
-      <User />
-      <div className='row top-buffer' />
-      <div className='row top-buffer' />
-      <div className='row top-buffer' />
-      <div className='jumbotron header-travellog'>
-        {/* <div className='jumbotron'> */}
-        <h1>Travel Log</h1> <br />
-        {/* <textarea className='log' /> */}
-      </div>
-      <form>
-        <div className='row top-buffer' />
-        <div className='row top-buffer' />
+    return <div>
+      {/* Page Content */}
 
-        {/* <TextArea /> */}
-
+      <div className='container'>
+        {/* <!-- Page Heading --> */}
         <div className='row'>
-          <div className='col-md-4  text-center'>
-            <h2 className=''> Photo </h2>
+          <div className='col-lg-12'>
+            <h1 className='page-header'>
+              Page Heading
+              <small>Secondary Text</small>
+            </h1>
           </div>
         </div>
+        {/* <!-- /.row --> */}
 
-        <div className='row top-buffer' />
-
-        <div className='row companions' />
-
-        <div className='row top-buffer' />
-
-        <div className='row fileuploader '>
-          <div className='col'>
-            <input type='file' />
+        {/* <!-- Project One --> */}
+        <div className='row'>
+          <div className='col-md-7'>
+            <a href='#'>
+              <TextArea />
+              {/* <img className='img-responsive' src='http://placehold.it/700x300' alt='' /> */}
+            </a>
+          </div>
+          <div className='col-md-5'>
+            <h3> DATE HERE </h3>
+            <h4>Day Description</h4>
+            <p>Please summarize your day.</p>
+            {/* <a className='btn btn-primary' href='#'>View Project <span className='glyphicon glyphicon-chevron-right' /></a> */}
           </div>
         </div>
+        {/* <!-- /.row --> */}
 
-        <div className='row top-buffer' />
-        <div className='row top-buffer' />
+        <hr />
 
-        <div className='row maps'>
-          <div className='col-lg-4'>
-            <h2>Map</h2>
+        {/* <!-- Project Two --> */}
+        <div className='row'>
+          <div className='col-md-7'>
+            <a href='#' />
+            <Photo />
+            {/* <img className='img-responsive' src='http://placehold.it/700x300' alt='' /> */}
+          </div>
+          <div className='col-md-5'>
+            <h3> DATE HERE </h3>
+            <h4>Day Description</h4>
+            <p>Please summarize your day.</p>
+            {/* <a className='btn btn-primary' href='#'>View Project <span className='glyphicon glyphicon-chevron-right' /></a> */}
           </div>
         </div>
+        {/* <!-- /.row --> */}
 
-        <div className='row top-buffer' />
+        <hr />
 
-      </form>
-      <footer className='footer'>
-        <p>&copy; Keith Lockey 2017</p>
-      </footer>
+        {/* <!-- Project Three --> */}
+        <div className='row'>
+          <div className='col-md-7'>
+            <a href='#' />
+            <MapLog />
+            {/* <img className='img-responsive' src='http://placehold.it/700x300' alt='' /> */}
+          </div>
+          <div className='col-md-5'>
+            <h3> DATE HERE </h3>
+            <h4>Day Description</h4>
+            <p>Please summarize your day.</p>
+          </div>
+        </div>
+        {/* <!-- /.row --> */}
+        <hr />
+        {/* <!-- Pagination --> */}
+        <div className='row text-center'>
+          <div className='col-lg-12'>
+            <ul className='pagination'>
+              <li>
+                <a href='#'>&laquo;</a>
+              </li>
+              <li className='active'>
+                <a href='#'>1</a>
+              </li>
+              <li>
+                <a href='#'>2</a>
+              </li>
+              <li>
+                <a href='#'>3</a>
+              </li>
+              <li>
+                <a href='#'>4</a>
+              </li>
+              <li>
+                <a href='#'>5</a>
+              </li>
+              <li>
+                <a href='#'>&raquo;</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        {/* <!-- /.row --> */}
+
+        <hr />
+
+        {/* <!-- Footer --> */}
+        <footer>
+          <div className='row'>
+            <div className='col-lg-12'>
+              <p>Copyright &copy; Your Website 2014</p>
+            </div>
+          </div>
+          {/* <!-- /.row --> */}
+        </footer>
+      </div>
     </div>
   }
 }

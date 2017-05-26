@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import styles from '../styles/login.scss'
+ // import styles from '../styles/login.scss'
 import {
   BrowserRouter as Router,
   Route,
@@ -9,11 +9,13 @@ import {
 } from 'react-router-dom'
 import * as firebase from 'firebase'
 import TravelLog from './TravelLog'
+import { observer } from 'mobx-react'
+import store from '../store'
 
 import db from '../db'
 window.db = db
 
-class Login extends Component {
+@observer class Login extends Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -24,6 +26,9 @@ class Login extends Component {
     this.handleChangePassword = this.handleChangePassword.bind(this)
     this.handleChangeEmail = this.handleChangeEmail.bind(this)
     this._submit = this._submit.bind(this)
+  }
+
+  componentWillMount () {
   }
 
   componentDidMount () {
@@ -45,21 +50,20 @@ class Login extends Component {
 
   _submit (event) {
     event.preventDefault()
-    console.log('submit')
-    console.log(this.state.email)
-    console.log('password' + this.state.password)
+    console.log('store user ' + store.user)
     const auth = firebase.auth()
     const email = this.state.email
     const password = this.state.password
     const promise = auth.signInWithEmailAndPassword(email, password)
-    promise.then(user => this.props.history.push('/travellog')) // ) console.log('user  **') <Route path='/travellog' component={TravelLog} />
-    .catch(e => console.log('error with signin'))
+    store.promise = promise
+    promise.then(user => {
+      store.user = user
+      this.props.history.push('/travellog')
+    }
+    ).catch(e => console.log('error with signin'))
   }
 
   render () {
-  //  if (this.state.redirect) {
-    //  return <Redirect push to='/createaccount' />
-  //  }
     return <div className='login-page'>
       <div className='form'>
         <form className='login-form' ref='create' onSubmit={this._submit}>
@@ -74,5 +78,3 @@ class Login extends Component {
 }
 
 export default Login
-
-{ /* <a onClick={this.handleOnClick} >Create an account</a>  */ }

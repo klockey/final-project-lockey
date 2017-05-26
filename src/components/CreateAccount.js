@@ -7,9 +7,9 @@ import {
   Link,
   Redirect
 } from 'react-router-dom'
-
 import * as firebase from 'firebase'
-
+import { observer } from 'mobx-react'
+import store from '../store'
 import db from '../db'
 window.db = db
 
@@ -47,7 +47,11 @@ class CreateAccount extends Component {
     // check for real email
     const password = this.state.password
     const promise = auth.createUserWithEmailAndPassword(email, password)
-    promise.then(user => this.props.history.push('/'))
+    store.promise = promise
+    promise.then(user => {
+      store.user = user
+      this.props.history.push('/travellog')
+    })
       .catch(e => console.log('error with registration'))
   }
 

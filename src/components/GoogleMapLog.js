@@ -14,14 +14,6 @@ class GoogleMapLog extends Component {
   }
 
   componentWillMount () {
-    const config = {
-      apiKey: 'AIzaSyCaFMPFRHXpzNH63e-i471KSSfWU7625KE',
-      authDomain: 'travellog-848b1.firebaseapp.com',
-      databaseURL: 'https://travellog-848b1.firebaseio.com',
-      storageBucket: 'travellog-848b1.appspot.com'
-    }
-
-    firebase.initializeApp(config)
   }
 
   mapMoved () {

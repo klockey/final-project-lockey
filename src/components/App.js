@@ -5,6 +5,7 @@ import {
   Switch,
   Link
 } from 'react-router-dom'
+import { observer } from 'mobx-react'
 import Login from './Login'
 import CreateAccount from './CreateAccount'
 import TravelLog from './TravelLog'
@@ -14,6 +15,7 @@ import MapLog from './Maplog'
 import User from './User'
 import Blog from './Blog'
 
+@observer
 class App extends Component {
   render () {
     return <div>
