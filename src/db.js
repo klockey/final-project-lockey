@@ -7,4 +7,6 @@ const app = firebase.initializeApp({
   storageBucket: 'travellog-848b1.appspot.com'
 })
 
+window.firebase = firebase
+export { firebase }
 export default app.database()

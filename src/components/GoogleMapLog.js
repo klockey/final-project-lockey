@@ -1,26 +1,25 @@
 import React, { Component } from 'react'
 import {withGoogleMap, GoogleMap, Marker} from 'react-google-maps'
 import * as firebase from 'firebase'
+import store from '../store'
+import { observer } from 'mobx-react'
 
+@observer
 class GoogleMapLog extends Component {
   constructor () {
     super()
     this.state = {
       map: null,
-      zoom: null,
-      uid: '-fooooooo1',
-      date: '2017-05-10'
+      zoom: null
     }
   }
 
-  componentWillMount () {
-  }
-
   mapMoved () {
+    console.log('uid ' + store.user.uid)
     const lat = this.state.map.getCenter().lat()
     const lng = this.state.map.getCenter().lng()
     const zoom = this.state.map.getZoom()
-    firebase.database().ref('/users/' + this.state.uid + '/logs/' + this.state.date + '/location').update({ lat, lng, zoom })
+    firebase.database().ref('/users/' + store.user.uid + '/logs/' + store.date + '/location').update({ lat, lng, zoom })
   }
 
   mapLoaded (map) {
@@ -32,7 +31,7 @@ class GoogleMapLog extends Component {
 
   zoomChanged () {
     console.log('zoom has changed ' + this.state.map.getZoom())
-    firebase.database().ref('/users/' + this.state.uid + '/logs/' + this.state.date + '/location/zoom').set(this.state.map.getZoom())
+    firebase.database().ref('/users/' + store.user.uid + '/logs/' + store.date + '/location/zoom').set(this.state.map.getZoom())
   }
 
   render () {
@@ -42,8 +41,8 @@ class GoogleMapLog extends Component {
         ref={this.mapLoaded.bind(this)}
         onDragEnd={this.mapMoved.bind(this)}
         onZoomChanged={this.zoomChanged.bind(this)}
-        defaultZoom={this.props.zoom}
-        defaultCenter={this.props.center}>
+        zoom={this.props.zoom}
+        center={this.props.center}>
         {markers.map((marker, index) => (
           <Marker {...marker} />
         )

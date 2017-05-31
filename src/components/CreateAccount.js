@@ -1,18 +1,11 @@
 import React, { Component } from 'react'
 import styles from '../styles/login.scss'
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Link,
-  Redirect
-} from 'react-router-dom'
-import * as firebase from 'firebase'
+import { Link } from 'react-router-dom'
 import { observer } from 'mobx-react'
 import store from '../store'
-import db from '../db'
-window.db = db
+import { firebase } from '../db'
 
+@observer
 class CreateAccount extends Component {
   constructor (props) {
     super(props)
@@ -40,14 +33,10 @@ class CreateAccount extends Component {
 
   _submit (event) {
     event.preventDefault()
-    console.log('submit')
-    console.log(this.state.email)
     const auth = firebase.auth()
     const email = this.state.email
-    // check for real email
     const password = this.state.password
     const promise = auth.createUserWithEmailAndPassword(email, password)
-    store.promise = promise
     promise.then(user => {
       store.user = user
       this.props.history.push('/travellog')
@@ -70,15 +59,3 @@ class CreateAccount extends Component {
 }
 
 export default CreateAccount
-
-{ /* <div className='login-page'>
- <div className='form'>
-   <form className='register-form'>
-     <input type='text' placeholder='name' />
-     <input type='password' placeholder='password' />
-     <input type='text' placeholder='email address' />
-     <button>create</button>
-     <p className='message'> Already registered? <a href='#' onClick=''> Sign In </a></p>
-   </form>
- </div>
-</div> */ }

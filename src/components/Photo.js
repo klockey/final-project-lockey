@@ -6,42 +6,54 @@ import '../styles/index.css'
 import FileInput from 'react-file-input'
 import Loading from './Loading'
 import _ from 'lodash'
+import store from '../store'
+import db from '../db'
+import { observer } from 'mobx-react'
 
+@observer
 class Photo extends Component {
   state = {
-    url: '',
-    counter: 0,
-    loaded: false,
-    uid: '-fooooooo1',
-    entries: {},
-    date: '2017-05-10'
-  }
-
-  componentWillMount () {
+    url: null
   }
 
   handleChange = (event) => {
     let file = event.target.files[0]
-    console.log(this.state.counter)
     let storageRef = firebase.storage().ref('sweetgifs/' + file.name)
     storageRef.put(file).then(() => {
       storageRef.getDownloadURL().then((url) => {
-        this.setState({
-          url: url
+        this.setState({ url: url }, () => {
+          db.ref(`/users/${store.user.uid}/logs/${store.date}/pictures`).set(url).then(() => {
+            console.log('Saved Photo')
+          })
         })
       })
     })
   }
 
-  componentDidUpdate () {
-    firebase.database().ref('/users/-fooooooo1/logs/2017-05-10/pictures/' + new Date().getUTCMilliseconds() + new Date().getUTCMilliseconds()).set(this.state.url)
-    console.log('url' + this.state.url)
+  componentDidMount () {
+    this.updatePhoto()
+  }
+
+  componentWillReact () {
+    this.updatePhoto()
+  }
+
+  updatePhoto () {
+    db.ref(`/users/${store.user.uid}/logs/${store.date}`).once('value').then((snapshot) => {
+      const val = snapshot.val()
+      if (val) {
+        this.setState({
+          url: val.pictures
+        })
+      }
+    })
   }
 
   render () {
   //  if (!this.state.loaded) return <Loading />
     return <div>
-      <img className='' src={this.state.url} />
+      {/* <img className='' src={this.state.url} /> */}
+      <img className='' src={this.state.url || this.state.oldPhoto} />
       <form onSubmit=''>
         <FileInput name='myImage'
           accept='.png,.gif'
@@ -54,3 +66,5 @@ class Photo extends Component {
 }
 
 export default Photo
+
+// firebase.database()

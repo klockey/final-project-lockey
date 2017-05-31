@@ -12,10 +12,8 @@ import TravelLog from './TravelLog'
 import TextArea from './TextArea'
 import Photo from './Photo'
 import MapLog from './Maplog'
-import User from './User'
 import Blog from './Blog'
 
-@observer
 class App extends Component {
   render () {
     return <div>
@@ -24,10 +22,6 @@ class App extends Component {
           <Route exact path='/' component={Login} />
           <Route path='/createaccount' component={CreateAccount} />
           <Route path='/travellog' component={TravelLog} />
-          <Route path='/textarea' component={TextArea} />
-          <Route path='/photo' component={Photo} />
-          <Route path='/maplog' component={MapLog} />
-          <Route path='/user' component={User} />
           <Route path='/blog' component={Blog} />
         </Switch>
       </Router>

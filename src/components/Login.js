@@ -1,19 +1,9 @@
 import React, { Component } from 'react'
- // import styles from '../styles/login.scss'
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Link,
-  Redirect
-} from 'react-router-dom'
-import * as firebase from 'firebase'
-import TravelLog from './TravelLog'
+import { Link } from 'react-router-dom'
 import { observer } from 'mobx-react'
 import store from '../store'
 
-import db from '../db'
-window.db = db
+import { firebase } from '../db'
 
 @observer class Login extends Component {
   constructor (props) {
@@ -50,13 +40,12 @@ window.db = db
 
   _submit (event) {
     event.preventDefault()
-    console.log('store user ' + store.user)
     const auth = firebase.auth()
     const email = this.state.email
     const password = this.state.password
     const promise = auth.signInWithEmailAndPassword(email, password)
-    store.promise = promise
     promise.then(user => {
+      console.log(user)
       store.user = user
       this.props.history.push('/travellog')
     }

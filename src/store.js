@@ -1,13 +1,18 @@
- import {computed, observable, observer} from 'mobx'
+import {computed, observable, observer} from 'mobx'
+import { firebase } from './db'
 
- class Store {
-@observable user = {}
-
-@observable date = new Date().getFullYear() + '-' + new Date().getMonth() + '-' + new Date().getDate()
+class Store {
+  @observable user = {}
+  @observable date = new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate()
+  @observable url = ''
 }
 
- const store = new Store()
+window.setTimeout(() => {
+  store.user = firebase.auth().currentUser
+}, 1000)
 
- window.store = store
+const store = new Store()
 
- export default store
+window.store = store
+
+export default store
