@@ -6,7 +6,7 @@ import ReadOnlyMap from './ReadOnlyMap'
 import db from '../db'
 import { NavLink } from 'react-router-dom'
 
-import logo from '../images/logo.png'
+// import logo from '../images/logo.png'
 
 @observer
 class Blog extends Component {
@@ -47,6 +47,7 @@ class Blog extends Component {
         </ul> */}
         {_.map(this.state.entries, (log, date) => {
           return <div key={date}>
+            {console.log('lat 1 ' + log.location.lat)}
             {/* <!-- Project One --> */}
             <div className='row'>
               <div className='col-md-7'>

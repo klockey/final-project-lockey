@@ -4,7 +4,7 @@ import Photo from './Photo'
 import MapLog from './MapLog'
 import store from '../store'
 import { observer } from 'mobx-react'
-import logo from '../images/logo.png'
+// import logo from '../images/logo.png'
 import db from '../db'
 import Loading from './Loading'
 import {
@@ -34,14 +34,14 @@ class TravelLog extends Component {
     this.dbRefObject.once('value', snapshot => {
       let log = snapshot.val()
       console.log({log})
-      if (log !== null) {
-        this.setState({
-          lat: log.lat,
-          lng: log.lng,
-          zoom: log.zoom,
-          loaded: true
-        })
-      }
+    //  if (log !== null) {
+      this.setState({
+        lat: log.lat,
+        lng: log.lng,
+        zoom: log.zoom,
+        loaded: true
+      })
+    //  }
     })
     // }
   }

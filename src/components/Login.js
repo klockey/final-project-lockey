@@ -19,9 +19,11 @@ import { firebase } from '../db'
   }
 
   componentWillMount () {
+    console.log('hello')
   }
 
   componentDidMount () {
+    console.log('hello')
   //  console.log('CreateAccount')
   //  this.state.redirect = false
   }
